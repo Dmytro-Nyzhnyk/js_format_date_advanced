@@ -8,7 +8,7 @@
  * @returns {string}
  */
 function formatDate(date, fromFormat, toFormat) {
-  const arrFromDate = date.split(fromFormat[3]);
+  const arrFromDate = date.split(fromFormat.at(-1));
   let year = '';
   let month = '';
   let day = '';
@@ -56,7 +56,7 @@ function formatDate(date, fromFormat, toFormat) {
     }
   }
 
-  const result = reorderDateArr.join(toFormat[3]);
+  const result = reorderDateArr.join(toFormat.at(-1));
 
   return result;
 }
