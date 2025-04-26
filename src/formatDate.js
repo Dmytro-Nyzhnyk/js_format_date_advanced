@@ -8,7 +8,17 @@
  * @returns {string}
  */
 function formatDate(date, fromFormat, toFormat) {
-  const arrFromDate = date.split(fromFormat.at(-1));
+  let seporatorFromFormat = '';
+  let separatorIndex = 0;
+
+  for (let i = 0; i < fromFormat.length; i++) {
+    if (date.indexOf(fromFormat[i]) !== date.lastIndexOf(fromFormat[i])) {
+      seporatorFromFormat += fromFormat[i];
+      separatorIndex = i;
+    }
+  }
+
+  const arrFromDate = date.split(seporatorFromFormat);
   let year = '';
   let month = '';
   let day = '';
@@ -56,7 +66,7 @@ function formatDate(date, fromFormat, toFormat) {
     }
   }
 
-  const result = reorderDateArr.join(toFormat.at(-1));
+  const result = reorderDateArr.join(toFormat[separatorIndex]);
 
   return result;
 }
